@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Об о себе</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+  }
+
+  /* Синяя рамка */
+  .blue-box {
+    position: fixed; /* закрепляем рамку при скролле */
+    top: 20px;       /* отступ сверху */
+    left: 20px;      /* отступ слева */
+    padding: 10px 15px;
+    border: 2px solid #007BFF; /* синяя рамка */
+    border-radius: 8px;
+    background-color: #f0f8ff;
+    font-weight: bold;
+    z-index: 1000; /* чтобы рамка была поверх контента */
+  }
+</style>
+</head>
+<body>
+
+<div class="blue-box">Обо мне</div>
+
+<div style="height:2000px; padding:20px;">
+  <p>Здесь основной контент страницы. Скроллируй вниз, чтобы проверить, что рамка закреплена.</p>
+</div>
+
+</body>
+</html>
