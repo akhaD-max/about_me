@@ -16,9 +16,10 @@
     header {
       background: #1e3a8a;
       color: white;
-      padding: 15px;
+      padding: 15px 30px;
       font-size: 1.2rem;
       font-weight: bold;
+      text-align: left; /* Переносим текст влево */
     }
 
     .carousel-container {
@@ -142,9 +143,6 @@
 
     prevBtn.addEventListener("click", () => showSlide(index - 1));
     nextBtn.addEventListener("click", () => showSlide(index + 1));
-
-    // Автопрокрутка каждые 5 секунд
-    setInterval(() => showSlide(index + 1), 5000);
   </script>
 </body>
 </html>
