@@ -1,37 +1,114 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Об о себе</title>
-<style>
-  body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-  }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Обо мне</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, sans-serif;
+      background: #0d1117; /* глубокий черный */
+      color: #e5e7eb;      /* светлый текст */
+      line-height: 1.8;
+    }
 
-  /* Синяя рамка */
-  .blue-box {
-    position: fixed; /* закрепляем рамку при скролле */
-    top: 20px;       /* отступ сверху */
-    left: 20px;      /* отступ слева */
-    padding: 10px 15px;
-    border: 2px solid #007BFF; /* синяя рамка */
-    border-radius: 8px;
-    background-color: #f0f8ff;
-    font-weight: bold;
-    z-index: 1000; /* чтобы рамка была поверх контента */
-  }
-</style>
+    header {
+      background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+      padding: 60px 20px;
+      text-align: center;
+      color: white;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin: 0;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    section {
+      margin-bottom: 60px;
+    }
+
+    section h2 {
+      color: #60a5fa; /* голубой */
+      font-size: 2rem;
+      margin-bottom: 15px;
+      border-left: 4px solid #2563eb;
+      padding-left: 12px;
+    }
+
+    section p {
+      font-size: 1.1rem;
+      color: #d1d5db;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      background: #111827;
+      color: #9ca3af;
+      font-size: 0.9rem;
+    }
+
+    a {
+      color: #3b82f6;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    a:hover {
+      color: #60a5fa;
+    }
+  </style>
 </head>
 <body>
+  <header>
+    <h1>Обо мне</h1>
+    <p>Небольшая история обо мне и моём пути</p>
+  </header>
 
-<div class="blue-box">Обо мне</div>
+  <main>
+    <section>
+      <h2>Кто я?</h2>
+      <p>
+        Меня зовут [Твоё имя]. Я человек, который стремится развиваться и находить смысл
+        в том, что делает. В этой статье я хочу рассказать немного о себе: о моих интересах,
+        мечтах и том, что формирует меня как личность.
+      </p>
+    </section>
 
-<div style="height:2000px; padding:20px;">
-  <p>Здесь основной контент страницы. Скроллируй вниз, чтобы проверить, что рамка закреплена.</p>
-</div>
+    <section>
+      <h2>Мои интересы</h2>
+      <p>
+        Я увлекаюсь [твоё увлечение/сфера деятельности]. Для меня это не просто хобби,
+        а способ самовыражения и источник радости. Я верю, что когда человек занимается
+        тем, что ему действительно близко, он обретает внутреннюю гармонию.
+      </p>
+    </section>
 
+    <section>
+      <h2>Ценности и цели</h2>
+      <p>
+        В жизни для меня важны ответственность, искренность и стремление к развитию.
+        Я ставлю перед собой цель идти вперёд шаг за шагом, сохраняя уважение к себе
+        и другим. Уверен, что именно такие качества помогают выстраивать будущее.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 [Твоё имя]. Все права защищены.</p>
+  </footer>
 </body>
 </html>
