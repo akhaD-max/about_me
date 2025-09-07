@@ -21,11 +21,22 @@
       text-align: left;
     }
 
-    .carousel-container {
+    /* Внешний контейнер */
+    .carousel-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      max-width: 800px;
+      margin: 60px auto;
       position: relative;
-      max-width: 600px;
-      margin: 50px auto;
+      gap: 15px;
+    }
+
+    /* Контейнер со слайдами */
+    .carousel-container {
+      flex: 1;
       overflow: hidden;
+      border-radius: 15px;
     }
 
     .carousel-slide {
@@ -48,11 +59,8 @@
       margin-bottom: 15px;
     }
 
-    /* Кнопки управления */
+    /* Стрелки */
     .carousel-btn {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
       background: rgba(30,58,138,0.85);
       color: white;
       border: none;
@@ -61,14 +69,12 @@
       border-radius: 50%;
       font-size: 1.5rem;
       z-index: 10;
+      transition: background 0.3s;
     }
 
     .carousel-btn:hover {
       background: #2563eb;
     }
-
-    #prevBtn { left: -60px; }   /* Вынесена за блок */
-    #nextBtn { right: -60px; }  /* Вынесена за блок */
 
     .contacts {
       margin: 60px auto;
@@ -103,23 +109,24 @@
   </header>
 
   <!-- Карусель -->
-  <div class="carousel-container">
-    <div class="carousel-slide" id="carousel">
-      <div class="carousel-item">
-        <h2>Обо мне</h2>
-        <p>Меня зовут [Твоё имя]. Я увлекаюсь технологиями, люблю учиться новому и стремлюсь развиваться в сфере ИТ.</p>
-      </div>
-      <div class="carousel-item">
-        <h2>Интересы в ИТ</h2>
-        <p>Меня интересуют искусственный интеллект, машинное обучение и разработка программ, которые помогают людям.</p>
-      </div>
-      <div class="carousel-item">
-        <h2>Опыт и работы</h2>
-        <p>Участвовал(а) в учебных проектах, делал(а) сайты-визитки, решал(а) задачи по программированию и постепенно набираюсь опыта.</p>
+  <div class="carousel-wrapper">
+    <button class="carousel-btn" id="prevBtn">&#10094;</button>
+    <div class="carousel-container">
+      <div class="carousel-slide" id="carousel">
+        <div class="carousel-item">
+          <h2>Обо мне</h2>
+          <p>Меня зовут [Твоё имя]. Я увлекаюсь технологиями, люблю учиться новому и стремлюсь развиваться в сфере ИТ.</p>
+        </div>
+        <div class="carousel-item">
+          <h2>Интересы в ИТ</h2>
+          <p>Меня интересуют искусственный интеллект, машинное обучение и разработка программ, которые помогают людям.</p>
+        </div>
+        <div class="carousel-item">
+          <h2>Опыт и работы</h2>
+          <p>Участвовал(а) в учебных проектах, делал(а) сайты-визитки, решал(а) задачи по программированию и постепенно набираюсь опыта.</p>
+        </div>
       </div>
     </div>
-    <!-- Стрелки -->
-    <button class="carousel-btn" id="prevBtn">&#10094;</button>
     <button class="carousel-btn" id="nextBtn">&#10095;</button>
   </div>
 
