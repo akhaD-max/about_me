@@ -1,183 +1,241 @@
-<!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Желающий поступить на программу Топ ИТ</title>
   <style>
-    body {
-      margin: 0;
+    :root{
+      --bg:#0d1117;
+      --card:#1f2937;
+      --blue-1:#1e3a8a;
+      --accent:#60a5fa;
+    }
+
+    body{
+      margin:0;
       font-family: "Segoe UI", Tahoma, sans-serif;
-      background: #0d1117;
+      background: var(--bg);
       color: #e5e7eb;
     }
 
-    header {
-      background: #1e3a8a;
-      color: white;
+    header{
+      background: var(--blue-1);
+      color: #fff;
       padding: 15px 30px;
-      font-size: 1.2rem;
-      font-weight: bold;
+      font-size: 1.15rem;
+      font-weight: 700;
       text-align: left;
     }
 
-    /* Карусель */
-    .carousel-wrapper {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    /* ---------- carousel ---------- */
+    .carousel-wrapper{
+      position: relative;          /* кнопки абсолютные внутри этой обёртки */
       max-width: 800px;
       margin: 60px auto;
-      position: relative;
-      gap: 15px;
-    }
-
-    .carousel-container {
-      flex: 1;
-      overflow: hidden;
-      border-radius: 15px;
-    }
-
-    .carousel-slide {
       display: flex;
-      transition: transform 0.5s ease-in-out;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      padding: 0 80px;            /* оставим место слева/справа для кнопок */
     }
 
-    .carousel-item {
-      min-width: 100%;
+    .carousel-container{
+      width:100%;
+      overflow: hidden;
+      border-radius: 14px;
+    }
+
+    .carousel-slide{
+      display:flex;
+      transition: transform 0.5s cubic-bezier(.22,.9,.27,1);
+      will-change: transform;
+    }
+
+    .carousel-item{
+      min-width:100%;
       box-sizing: border-box;
-      background: #1f2937;
+      background: var(--card);
       padding: 40px;
-      border-radius: 15px;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.45);
       text-align: center;
     }
 
-    .carousel-item h2 {
-      color: #60a5fa;
-      margin-bottom: 15px;
+    .carousel-item h2{
+      color: var(--accent);
+      margin:0 0 12px 0;
     }
 
-    /* Стрелки */
-    .carousel-btn {
-      background: rgba(30,58,138,0.85);
-      color: white;
-      border: none;
-      padding: 15px 20px;
-      cursor: pointer;
+    /* ---------- buttons (outside visual bounds but clickable) ---------- */
+    .carousel-btn{
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 56px;
+      height: 56px;
       border-radius: 50%;
-      font-size: 1.5rem;
-      z-index: 10;
-      transition: background 0.3s;
+      border: none;
+      background: rgba(30,58,138,0.95);
+      color: #fff;
+      font-size: 24px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.45);
+      z-index: 9999;           /* очень большой, чтобы ничего не перекрывало */
+      transition: transform .15s ease, background .15s ease;
+      pointer-events: auto;
+    }
+    .carousel-btn:active{ transform: translateY(-50%) scale(.97); }
+    .carousel-btn:hover { background: #2563eb; }
+
+    /* позиция кнопок: вынесены за основной визуальный блок */
+    .carousel-btn#prevBtn{ left: calc(50% - 420px); }  /* подвинуть влево от центра */
+    .carousel-btn#nextBtn{ right: calc(50% - 420px); } /* подвинуть вправо от центра */
+
+    /* при малых экранах подвинем кнопки поближе */
+    @media (max-width:900px){
+      .carousel-wrapper{ padding:0 40px; }
+      .carousel-btn#prevBtn{ left: 8px; }
+      .carousel-btn#nextBtn{ right: 8px; }
     }
 
-    .carousel-btn:hover {
-      background: #2563eb;
-    }
-    
-    /* Контакты + картинка */
-    .contacts-section {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 40px;
+    /* ---------- contacts + image block ---------- */
+    .contacts-section{
       max-width: 900px;
       margin: 60px auto;
-      flex-wrap: wrap; /* на телефонах переносится */
+      display: flex;
+      gap: 36px;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 0 20px;
+      flex-wrap: wrap;
     }
 
-    .contacts {
-      flex: 1;
-      padding: 20px;
+    .contacts{
+      flex: 1 1 320px;
       text-align: left;
     }
 
-    .contacts h2 {
+    .contacts h2{
       color: #3b82f6;
-      margin-bottom: 15px;
+      margin: 0 0 12px 0;
     }
 
-    .contacts p {
-      font-size: 1rem;
-      margin: 5px 0;
+    .contacts p{ margin:6px 0; font-size: 1rem; color:#d1d5db; }
+
+    .contacts a{ color: var(--accent); text-decoration: none; }
+    .contacts a:hover{ text-decoration: underline; }
+
+    .contacts-img{
+      flex: 0 0 320px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
     }
 
-    .contacts a {
-      color: #60a5fa;
-      text-decoration: none;
+    .contacts-img img{
+      max-width:100%;
+      height: auto;
+      border-radius:10px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.45);
     }
 
-    .contacts a:hover {
-      text-decoration: underline;
-    }
-
-    .contacts-img {
-      flex: 1;
-      text-align: center;
-    }
-
-    .contacts-img img {
-      max-width: 100%;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    /* немного читаемости на узких устройствах */
+    @media (max-width:700px){
+      .contacts-section{ justify-content: center; }
+      .contacts-img{ order: 2; width: 100%; }
+      .contacts{ order: 1; width: 100%; }
+      .carousel-wrapper{ margin: 40px 12px; }
     }
   </style>
 </head>
 <body>
-  <header>
-    Желающий поступить на программу Топ ИТ
-  </header>
+  <header>Желающий поступить на программу Топ ИТ</header>
 
   <!-- Карусель -->
-  <div class="carousel-wrapper">
-    <button class="carousel-btn" id="prevBtn">&#10094;</button>
+  <div class="carousel-wrapper" aria-label="Карусель">
+    <!-- Кнопки — абсолютные в wrapper -->
+    <button id="prevBtn" class="carousel-btn" aria-label="Предыдущий слайд">&#10094;</button>
+
     <div class="carousel-container">
-      <div class="carousel-slide" id="carousel">
+      <div id="carousel" class="carousel-slide">
         <div class="carousel-item">
           <h2>Обо мне</h2>
-          <p>Меня зовут [Твоё имя]. Я увлекаюсь технологиями, люблю учиться новому и стремлюсь развиваться в сфере ИТ.</p>
+          <p>Меня зовут <strong>[Твоё имя]</strong>. Я увлекаюсь технологиями, люблю учиться новому и стремлюсь развиваться в сфере ИТ.</p>
         </div>
+
         <div class="carousel-item">
           <h2>Интересы в ИТ</h2>
           <p>Меня интересуют искусственный интеллект, машинное обучение и разработка программ, которые помогают людям.</p>
         </div>
+
         <div class="carousel-item">
           <h2>Опыт и работы</h2>
           <p>Участвовал(а) в учебных проектах, делал(а) сайты-визитки, решал(а) задачи по программированию и постепенно набираюсь опыта.</p>
         </div>
       </div>
     </div>
-    <button class="carousel-btn" id="nextBtn">&#10095;</button>
+
+    <button id="nextBtn" class="carousel-btn" aria-label="Следующий слайд">&#10095;</button>
   </div>
 
-  <!-- Контакты  -->
+  <!-- Контакты + картинка -->
   <div class="contacts-section">
     <div class="contacts">
       <h2>Контактная информация</h2>
       <p>Email: <a href="mailto:example@mail.com">example@mail.com</a></p>
       <p>Telegram: <a href="https://t.me/username" target="_blank">@username</a></p>
     </div>
-    <div class="contacts-img">
+
+    <div class="contacts-img" aria-hidden="true">
+      <!-- Можешь заменить src на своё изображение -->
       <img src="https://img.freepik.com/free-photo/desktop-with-computer_23-2148110268.jpg?semt=ais_hybrid&w=740&q=80" alt="Клавиатура">
     </div>
   </div>
+
   <script>
-    const carousel = document.getElementById("carousel");
-    const prevBtn = document.getElementById("prevBtn");
-    const nextBtn = document.getElementById("nextBtn");
-    const items = document.querySelectorAll(".carousel-item");
-    let index = 0;
+    document.addEventListener('DOMContentLoaded', () => {
+      const carousel = document.getElementById('carousel');
+      const items = carousel.querySelectorAll('.carousel-item');
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+      let index = 0;
 
-    function showSlide(i) {
-      if (i < 0) index = items.length - 1;
-      else if (i >= items.length) index = 0;
-      else index = i;
+      function showSlide(i){
+        if (i < 0) index = items.length - 1;
+        else if (i >= items.length) index = 0;
+        else index = i;
 
-      carousel.style.transform = translateX(${-index * 100}%);
-    }
+        // сдвиг в процентах
+        carousel.style.transform = `translateX(${ -index * 100 }%)`;
+      }
 
-    prevBtn.addEventListener("click", () => showSlide(index - 1));
-    nextBtn.addEventListener("click", () => showSlide(index + 1));
+      // надёжные обработчики клика + лог для отладки
+      prevBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        console.log('prev click — current index before:', index);
+        showSlide(index - 1);
+        console.log('now index:', index);
+      });
+
+      nextBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        console.log('next click — current index before:', index);
+        showSlide(index + 1);
+        console.log('now index:', index);
+      });
+
+      // поддержка стрелок клавиатуры (лево/право)
+      document.addEventListener('keydown', (ev) => {
+        if (ev.key === 'ArrowLeft') showSlide(index - 1);
+        if (ev.key === 'ArrowRight') showSlide(index + 1);
+      });
+
+      // init
+      showSlide(0);
+    });
   </script>
 </body>
 </html>
