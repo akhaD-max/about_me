@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Сайт-визитка для Топ IT</title>
+  <title>Желающий поступить на программу Топ ИТ</title>
   <style>
     body {
       margin: 0;
@@ -21,7 +21,7 @@
       text-align: left;
     }
 
-    /* Внешний контейнер */
+    /* Карусель */
     .carousel-wrapper {
       display: flex;
       align-items: center;
@@ -32,7 +32,6 @@
       gap: 15px;
     }
 
-    /* Контейнер со слайдами */
     .carousel-container {
       flex: 1;
       overflow: hidden;
@@ -76,11 +75,21 @@
       background: #2563eb;
     }
 
-    .contacts {
+    /* Контакты + картинка */
+    .contacts-section {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      max-width: 900px;
       margin: 60px auto;
-      max-width: 600px;
+      flex-wrap: wrap; /* на телефонах переносится */
+    }
+
+    .contacts {
+      flex: 1;
       padding: 20px;
-      text-align: center;
+      text-align: left;
     }
 
     .contacts h2 {
@@ -93,19 +102,30 @@
       margin: 5px 0;
     }
 
-    a {
+    .contacts a {
       color: #60a5fa;
       text-decoration: none;
     }
 
-    a:hover {
+    .contacts a:hover {
       text-decoration: underline;
+    }
+
+    .contacts-img {
+      flex: 1;
+      text-align: center;
+    }
+
+    .contacts-img img {
+      max-width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
     }
   </style>
 </head>
 <body>
   <header>
-    Сайт-визитка для Топ IT
+    Желающий поступить на программу Топ ИТ
   </header>
 
   <!-- Карусель -->
@@ -115,7 +135,7 @@
       <div class="carousel-slide" id="carousel">
         <div class="carousel-item">
           <h2>Обо мне</h2>
-          <p>Меня зовут Эназаров Ахад. Я увлекаюсь технологиями, люблю учиться новому и стремлюсь развиваться в сфере ИТ.</p>
+          <p>Меня зовут [Твоё имя]. Я увлекаюсь технологиями, люблю учиться новому и стремлюсь развиваться в сфере ИТ.</p>
         </div>
         <div class="carousel-item">
           <h2>Интересы в ИТ</h2>
@@ -123,20 +143,24 @@
         </div>
         <div class="carousel-item">
           <h2>Опыт и работы</h2>
-          <p>Участвовал в учебных проектах, разрабатывал сайты-визитки, решал задачи по программированию. Постепенно набираюсь опыта.</p>
+          <p>Участвовал(а) в учебных проектах, делал(а) сайты-визитки, решал(а) задачи по программированию и постепенно набираюсь опыта.</p>
         </div>
       </div>
     </div>
     <button class="carousel-btn" id="nextBtn">&#10095;</button>
   </div>
 
-  <!-- Контакты -->
-  <div class="contacts">
-    <h2>Контактная информация</h2>
-    <p>Email: <a href="mailto:example@mail.com">///</a></p>
-    <p>Telegram: <a href="https://t.me/username" target="_blank">///</a></p>
+  <!-- Контакты  -->
+  <div class="contacts-section">
+    <div class="contacts">
+      <h2>Контактная информация</h2>
+      <p>Email: <a href="mailto:example@mail.com">example@mail.com</a></p>
+      <p>Telegram: <a href="https://t.me/username" target="_blank">@username</a></p>
+    </div>
+    <div class="contacts-img">
+      <img src="https://img.freepik.com/free-photo/desktop-with-computer_23-2148110268.jpg?semt=ais_hybrid&w=740&q=80" alt="Клавиатура">
+    </div>
   </div>
-
   <script>
     const carousel = document.getElementById("carousel");
     const prevBtn = document.getElementById("prevBtn");
@@ -149,7 +173,7 @@
       else if (i >= items.length) index = 0;
       else index = i;
 
-      carousel.style.transform = `translateX(${-index * 100}%)`;
+      carousel.style.transform = translateX(${-index * 100}%);
     }
 
     prevBtn.addEventListener("click", () => showSlide(index - 1));
