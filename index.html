@@ -23,7 +23,7 @@
       color: #fff;
       padding: 15px 30px;
       font-size: 1.15rem;
-      font-weight: 700;
+      font-weight: 700;f
       text-align: left;
     }
 
@@ -38,6 +38,24 @@
       gap: 16px;
       padding: 0 80px;            /* оставим место слева/справа для кнопок */
     }
+
+    .item-content{
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+    gap: 20px;
+    }
+
+   .item-content.text{
+    flex: 1;
+    text-align: left;
+   }
+
+   .item-content.photo.img{
+    max-width: 200px;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.5);
+   }
 
     .carousel-container{
       width:100%;
@@ -60,6 +78,12 @@
       box-shadow: 0 8px 24px rgba(0,0,0,0.45);
       text-align: center;
     }
+    .carousel-item.item2{ 
+      background: #008B8B;
+    } 
+    .carousel-item.item3{ 
+      background: #4169E1;
+    } 
 
     .carousel-item h2{
       color: var(--accent);
@@ -161,13 +185,13 @@
 
     <div class="carousel-container">
       <div id="carousel" class="carousel-slide">
-        <div class="carousel-item">
+        <div class="carousel-item item 1">
           <h2>Обо мне</h2>
           <p>Меня зовут <strong>Эназаров Ахад</strong>, я являюсь студентом на направлении 'Информационные системы и технологии'. 
             Интересуюсь машинным обучением и работой искуственных интеллектов, хочу развиваться на данном пути.</p>
         </div>
 
-        <div class="carousel-item">
+        <div class="carousel-item item2">
           <h2>Опыт и работы</h2>
           <p>Опыт в сфере ИТ у меня небольшой: я изучаю язык программирования Python; в 2024 году окончил курс 'Python и Django. Твой первый сайт.'
           в рамках программы 'Код Будущего'. При обучении на данном курсе мною был изучен фреймворк Python'a Django, а также библиотека Tkinter. В
@@ -175,9 +199,10 @@
           и сертификат об успешном окончании курса.</p>
         </div>
 
-        <div class="carousel-item">
+        <div class="carousel-item item3">
           <h2>Моя мотивация</h2>
-          <p>Несмотря на мой скромный опыт, я готов учиться и развиваться. Мне хотелось бы поучаствовать в данной программе,
+          <p> Почему именно меня? Я готов учиться и развиваться, готов не бояться совершать ошибки, готов падать и вставать.
+            Мне хотелось бы поучаствовать в данной программе,
           так как для меня это возможность соединить учебу и реальную практику, пробуя себя в задачах, которые мне ставят реальные компании, и
           'набивать руку', создавать опыт для дальнейшей работы. Я особенно интересуюсь темой искуственного интеллекта, поэтому для меня важно 
           увидеть, как теоретические знания применяются в таких сферах.</p>
